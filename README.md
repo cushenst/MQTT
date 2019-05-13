@@ -8,6 +8,7 @@ pip3 install -r requirements.txt
 ```
 
 # Usage
+#### To subscribe to everything please use # (eg. stephen/#)
 #### Subscriber
 ```bash
 python3 mosquittoClient.py $TOPIC $QOS
@@ -17,4 +18,5 @@ python3 mosquittoClient.py $TOPIC $QOS
 ```bash
 python3 mosquittoSender.py $TOPIC $QOS $PAYLOAD
 ```
+
  
