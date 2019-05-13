@@ -1,7 +1,10 @@
-import paho.mqtt.publish as publish
+import paho.mqtt.publish as publish # import publisher library
 import sys
-#topic = input("please enter a topic \n")
-topic = "stephen/test"
-#payload = input("please enter a message/payload \n")
-payload = "hello"
-publish.single(sys.argv[1], payload=sys.argv[3], qos=int(sys.argv[2]), hostname="test.mosquitto.org", port=1883, keepalive=60)
+
+
+topic = sys.argv[1]         # read the topic from the command
+qos = int(sys.argv[2])      # read the qos from the command
+payload = sys.argv[3]       # read the payload from the command
+
+
+publish.single(topic, payload=payload, qos=qos, hostname="test.mosquitto.org", port=1883, keepalive=60)
