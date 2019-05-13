@@ -11,12 +11,12 @@ pip3 install -r requirements.txt
 #### To subscribe to everything please use # (eg. stephen/#)
 #### Subscriber
 ```bash
-python3 mosquittoClient.py $TOPIC $QOS
+python3 mosquittoSubscriber.py $TOPIC $QOS
 ```
 
 #### Publisher
 ```bash
-python3 mosquittoSender.py $TOPIC $QOS $PAYLOAD
+python3 mosquittoPublisher.py $TOPIC $QOS $PAYLOAD
 ```
 
  
