@@ -1,42 +1,54 @@
-from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import sys
-import ssl
 import time
 
-# topic = input("please enter a topic \n")
-topic = sys.argv[1]
-# payload = input("please enter a message/payload \n")
-payload = sys.argv[3]
-qos = int(sys.argv[2])
+from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
+# topic = input("please enter a topic \n")
+
+topic = sys.argv[5]
+# payload = input("please enter a message/payload \n")
+payload = sys.argv[7]
+qos = int(sys.argv[6])
+
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 host = "amazonaws.com"
 =======
 host = "amazonaws.com"  #enter host endpoint
 >>>>>>> 80e7f3d... Added comments and updated README
+=======
+host = sys.argv[4]  #enter host endpoint
+>>>>>>> 7493ed1... Added cert files as parameter
+=======
+host = sys.argv[4]  # enter host endpoint
+>>>>>>> 040955f... Fixed formatting
 port = 8883
-clientId = "Intern-Test"
-thingID = "Intern-Test"
-caPath = "AmazonRootCA1.crt"    #path to CA
-certPath = "certificate.pem"    #path to Cert
-keyPath = "private.pem"         #path to Private Key
+client_id = "Intern-Test"
+thing_id = "Intern-Test"
+ca_path = sys.argv[1]  # path to CA
+cert_path = sys.argv[2]  # path to Cert
+key_path = sys.argv[3]  # path to Private Key
 
-myAWSIoTMQTTClient = AWSIoTMQTTClient(clientId)
-myAWSIoTMQTTClient.configureEndpoint(host, port)
-myAWSIoTMQTTClient.configureCredentials(caPath, keyPath, certPath)
+aws_iot_client = AWSIoTMQTTClient(client_id)
+aws_iot_client.configureEndpoint(host, port)
+aws_iot_client.configureCredentials(ca_path, key_path, cert_path)
 
-myAWSIoTMQTTClient.configureAutoReconnectBackoffTime(1, 32, 20)
-myAWSIoTMQTTClient.configureOfflinePublishQueueing(-1)  # Infinite offline Publish queueing
-myAWSIoTMQTTClient.configureDrainingFrequency(2)  # Draining: 2 Hz
-myAWSIoTMQTTClient.configureConnectDisconnectTimeout(10)  # 10 sec
-myAWSIoTMQTTClient.configureMQTTOperationTimeout(5)  # 5 sec
+aws_iot_client.configureAutoReconnectBackoffTime(1, 32, 20)
+aws_iot_client.configureOfflinePublishQueueing(-1)  # Infinite offline Publish queueing
+aws_iot_client.configureDrainingFrequency(2)  # Draining: 2 Hz
+aws_iot_client.configureConnectDisconnectTimeout(10)  # 10 sec
+aws_iot_client.configureMQTTOperationTimeout(5)  # 5 sec
 
-
-myAWSIoTMQTTClient.connect()
+aws_iot_client.connect()
 time.sleep(2)
 
 messageJson = '{"message": "' + payload + '"}'
 
-myAWSIoTMQTTClient.publish(topic, messageJson, qos)
+aws_iot_client.publish(topic, messageJson, qos)
 
+<<<<<<< HEAD
 myAWSIoTMQTTClient.disconnect()
+=======
+aws_iot_client.disconnect()
+>>>>>>> 040955f... Fixed formatting

@@ -1,44 +1,41 @@
-from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import sys
-import ssl
 import time
 
-# topic = input("please enter a topic \n")
-topic = sys.argv[1]
-# payload = input("please enter a message/payload \n")
-#payload = sys.argv[3]
-qos = int(sys.argv[2])
+from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
-def messageRec(client, userdata, message):
+topic = sys.argv[5]
+qos = int(sys.argv[6])
+
+
+def message_received(client, userdata, message):
     print("Received a new message: ")
     print(message.payload)
     print("from topic: ")
     print(message.topic)
     print("--------------\n\n")
 
-host = "amazonaws.com"  #endpoint url
+
+host = sys.argv[4]  # endpoint url
 port = 8883
-clientId = "Intern-Test"
-thingID = "Intern-Test"
-caPath = "AmazonRootCA1.crt"    #Path to Ca
-certPath = "certificate.pem"    #Path to cert
-keyPath = "private.pem"         #Path to Private Key
+client_id = "Intern-Test"
+thing_id = "Intern-Test"
+ca_path = sys.argv[1]  # path to CA
+cert_path = sys.argv[2]  # path to Cert
+key_path = sys.argv[3]  # path to Private Key
 
-myAWSIoTMQTTClient = AWSIoTMQTTClient(clientId)
-myAWSIoTMQTTClient.configureEndpoint(host, port)
-myAWSIoTMQTTClient.configureCredentials(caPath, keyPath, certPath)
+aws_iot_client = AWSIoTMQTTClient(client_id)
+aws_iot_client.configureEndpoint(host, port)
+aws_iot_client.configureCredentials(ca_path, key_path, cert_path)
 
-myAWSIoTMQTTClient.configureAutoReconnectBackoffTime(1, 32, 20)
-myAWSIoTMQTTClient.configureOfflinePublishQueueing(-1)  # Infinite offline Publish queueing
-myAWSIoTMQTTClient.configureDrainingFrequency(2)  # Draining: 2 Hz
-myAWSIoTMQTTClient.configureConnectDisconnectTimeout(10)  # 10 sec
-myAWSIoTMQTTClient.configureMQTTOperationTimeout(5)  # 5 sec
+aws_iot_client.configureAutoReconnectBackoffTime(1, 32, 20)
+aws_iot_client.configureOfflinePublishQueueing(-1)  # Infinite offline Publish queueing
+aws_iot_client.configureDrainingFrequency(2)  # Draining: 2 Hz
+aws_iot_client.configureConnectDisconnectTimeout(10)  # 10 sec
+aws_iot_client.configureMQTTOperationTimeout(5)  # 5 sec
 
+aws_iot_client.connect()
 
-myAWSIoTMQTTClient.connect()
-
-
-myAWSIoTMQTTClient.subscribe(topic, qos, messageRec)
+aws_iot_client.subscribe(topic, qos, message_received)
 
 time.sleep(2)
 print("waiting for messages")

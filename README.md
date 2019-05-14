@@ -1,5 +1,5 @@
 # MQTT Sample Script
-##### This script allows you to send messages to test.mosquitto.org using python
+##### A simple MQTT client using pythong for Mosquitto and AWS
 
 # Installation
 ##### Using pip3
@@ -27,11 +27,11 @@ python3 mosquittoPublisher.py $TOPIC $QOS $PAYLOAD
 
 #### Subscriber
 ```bash
-python3 awsSubscriber.py $TOPIC $QOS
+python3 awsSubscriber.py $CA $CERT $PRIVATEKEY $ENDPOINT $TOPIC $QOS
 ```
 
 #### Publisher
 ```bash
-python3 awsPublisher.py $TOPIC $QOS $PAYLOAD
+python3 awsPublisher.py $CA $CERT $PRIVATEKEY $ENDPOINT $TOPIC $QOS $PAYLOAD
 ```
  
