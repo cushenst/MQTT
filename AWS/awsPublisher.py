@@ -9,13 +9,17 @@ topic = sys.argv[1]
 payload = sys.argv[3]
 qos = int(sys.argv[2])
 
+<<<<<<< HEAD
 host = "amazonaws.com"
+=======
+host = "amazonaws.com"  #enter host endpoint
+>>>>>>> 80e7f3d... Added comments and updated README
 port = 8883
 clientId = "Intern-Test"
 thingID = "Intern-Test"
-caPath = "AmazonRootCA1.crt"
-certPath = "certificate.pem"
-keyPath = "private.pem"
+caPath = "AmazonRootCA1.crt"    #path to CA
+certPath = "certificate.pem"    #path to Cert
+keyPath = "private.pem"         #path to Private Key
 
 myAWSIoTMQTTClient = AWSIoTMQTTClient(clientId)
 myAWSIoTMQTTClient.configureEndpoint(host, port)

@@ -16,13 +16,13 @@ def messageRec(client, userdata, message):
     print(message.topic)
     print("--------------\n\n")
 
-host = "amazonaws.com"
+host = "amazonaws.com"  #endpoint url
 port = 8883
 clientId = "Intern-Test"
 thingID = "Intern-Test"
-caPath = "AmazonRootCA1.crt"
-certPath = "certificate.pem"
-keyPath = "private.pem"
+caPath = "AmazonRootCA1.crt"    #Path to Ca
+certPath = "certificate.pem"    #Path to cert
+keyPath = "private.pem"         #Path to Private Key
 
 myAWSIoTMQTTClient = AWSIoTMQTTClient(clientId)
 myAWSIoTMQTTClient.configureEndpoint(host, port)
