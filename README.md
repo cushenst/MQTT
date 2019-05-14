@@ -27,11 +27,11 @@ python3 mosquittoPublisher.py $TOPIC $QOS $PAYLOAD
 
 #### Subscriber
 ```bash
-python3 awsSubscriber.py $CA $CERT $PRIVATEKEY $ENDPOINT $TOPIC $QOS
+python3 awsSubscriber.py $CA_PATH $CERT_PATH $PRIVATEKEY_PATH $ENDPOINT $TOPIC $QOS
 ```
 
 #### Publisher
 ```bash
-python3 awsPublisher.py $CA $CERT $PRIVATEKEY $ENDPOINT $TOPIC $QOS $PAYLOAD
+python3 awsPublisher.py $CA_PATH $CERT_PATH $PRIVATEKEY_PATH $ENDPOINT $TOPIC $QOS $PAYLOAD
 ```
  

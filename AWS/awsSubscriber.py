@@ -1,5 +1,6 @@
 import sys
 import time
+import uuid
 
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
@@ -17,8 +18,8 @@ def message_received(client, userdata, message):
 
 host = sys.argv[4]  # endpoint url
 port = 8883
-client_id = "Intern-Test"
-thing_id = "Intern-Test"
+client_id = str(uuid.uuid4())
+
 ca_path = sys.argv[1]  # path to CA
 cert_path = sys.argv[2]  # path to Cert
 key_path = sys.argv[3]  # path to Private Key
