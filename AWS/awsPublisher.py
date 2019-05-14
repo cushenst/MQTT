@@ -3,10 +3,7 @@ import time
 
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
-# topic = input("please enter a topic \n")
-
 topic = sys.argv[5]
-# payload = input("please enter a message/payload \n")
 payload = sys.argv[7]
 qos = int(sys.argv[6])
 
