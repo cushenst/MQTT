@@ -1,3 +1,4 @@
+import datetime
 import logging
 import sys
 
@@ -32,15 +33,20 @@ if len(sys.argv) == 4:
 else:
     device_to_monitor = "any"
 try:
-    for i in range(0, partition):
-        receiver = client.add_receiver(consumer_group, str(i), prefetch=100, offset=offset)
+    for i in range(0, partition - 1):
+        receiver = client.add_receiver(consumer_group, str(i), prefetch=0, offset=offset)
     client.run()
-    while partition > 0:
+    startup_time = datetime.datetime.utcnow()
+    while partition > 1:
         for event_data in receiver.receive(timeout=100):
+            msg_time = event_data.enqueued_time
             if last_sn != event_data.sequence_number and (
-                    event_data.device_id.decode() == device_to_monitor or device_to_monitor == "any"):
+                    event_data.device_id.decode() == device_to_monitor or device_to_monitor == "any") and (
+                    msg_time > startup_time):
+
                 print("Message from Device: \t\t'{}'\nWith Message: \t\t\t'{}'".format(
                     event_data.device_id.decode(), event_data.message))
+
                 topic = event_data.application_properties
                 topic = list(topic.keys())
                 if len(topic) > 0:
@@ -48,6 +54,7 @@ try:
                 else:
                     topic = ""
                 print(f"From Topic: \t\t\t'{topic}'\n")
+
             last_sn = event_data.sequence_number
 
 
