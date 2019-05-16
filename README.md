@@ -35,3 +35,29 @@ python3 awsSubscriber.py $CA_PATH $CERT_PATH $PRIVATEKEY_PATH $ENDPOINT $TOPIC $
 python3 awsPublisher.py $CA_PATH $CERT_PATH $PRIVATEKEY_PATH $ENDPOINT $TOPIC $QOS $PAYLOAD
 ```
  
+## Azure
+
+#### Device
+
+##### Sender
+```bash
+python3 azureDeviceSender.py $CERT_PATH $PRIVATEKEY_PATH $ENDPOINT $DEVICE_ID $TOPIC
+
+``` 
+##### Receiver
+```bash
+python3 azureDeviceReceiver.py $CERT_PATH $PRIVATEKEY_PATH $ENDPOINT $DEVICE_ID
+
+```
+
+#### Cloud
+
+##### Sender
+```bash
+python3 azureCloudSender.py $ENDPOINT_STRING $DEVICE_ID
+```
+
+##### Receiver
+```bash
+python3 azureCloudReceiver.py $ENDPOINT_STRING $NUMBER_OF_PARTITION $DEVICE_ID (optional)
+```
