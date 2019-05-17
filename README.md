@@ -1,5 +1,5 @@
 # MQTT Sample Script
-##### A simple MQTT client using pythong for Mosquitto and AWS
+##### A simple MQTT client using python for Mosquitto and AWS
 
 # Installation
 ##### Using pip3
