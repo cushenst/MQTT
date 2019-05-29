@@ -8,19 +8,7 @@ topic = sys.argv[5]
 payload = sys.argv[7]
 qos = int(sys.argv[6])
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-host = "amazonaws.com"
-=======
-host = "amazonaws.com"  #enter host endpoint
->>>>>>> 80e7f3d... Added comments and updated README
-=======
-host = sys.argv[4]  #enter host endpoint
->>>>>>> 7493ed1... Added cert files as parameter
-=======
 host = sys.argv[4]  # enter host endpoint
->>>>>>> 040955f... Fixed formatting
 port = 8883
 
 client_id = str(uuid.uuid4())
@@ -45,8 +33,4 @@ messageJson = '{"message": "' + payload + '"}'
 
 aws_iot_client.publish(topic, messageJson, qos)
 
-<<<<<<< HEAD
-myAWSIoTMQTTClient.disconnect()
-=======
 aws_iot_client.disconnect()
->>>>>>> 040955f... Fixed formatting
